@@ -1,8 +1,7 @@
-import { Module, Scope } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Event } from 'src/events/entities/event.entity';
-import { COFFEE_BRANDS } from './coffee.constants';
 import { CoffeesController } from './coffees.controller';
 import { CoffeesService } from './coffees.service';
 import coffeesConfig from './config/coffees.config';
@@ -15,14 +14,7 @@ import { Flavor } from './entities/flavor.entity';
     ConfigModule.forFeature(coffeesConfig),
   ],
   controllers: [CoffeesController],
-  providers: [
-    CoffeesService,
-    {
-      provide: COFFEE_BRANDS,
-      useFactory: () => ['buddy brew', 'nescafe'],
-      scope: Scope.TRANSIENT,
-    },
-  ],
+  providers: [CoffeesService],
   exports: [CoffeesService],
 })
 export class CoffeesModule {}
