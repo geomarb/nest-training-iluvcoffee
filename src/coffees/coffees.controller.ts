@@ -17,14 +17,11 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 
 @Controller('coffees')
 export class CoffeesController {
-  constructor(private readonly coffeeService: CoffeesService) {
-    console.log('CoffeesController created');
-  }
+  constructor(private readonly coffeeService: CoffeesService) {}
 
   @UsePipes(ValidationPipe)
   @Get()
   findAll(@Query() paginationQuery: PaginationQueryDto) {
-    // const { limit, offset } = paginateQuery;
     return this.coffeeService.findAll(paginationQuery);
   }
 
