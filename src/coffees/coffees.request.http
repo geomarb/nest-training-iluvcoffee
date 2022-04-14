@@ -1,0 +1,20 @@
+@url = http://localhost:3000
+@endpoint = coffees
+@contentType = application/json
+
+###
+GET {{url}}/{{endpoint}} HTTP/1.1
+
+###
+GET {{url}}/{{endpoint}}/{{id}} HTTP/1.1
+
+###
+@id = 5
+PATCH {{url}}/{{endpoint}}/{{id}} HTTP/1.1
+Content-Type: {{contentType}}
+
+{
+	"name": "Coffee #4",
+	"brand": "Nest",
+	"flavors": ["caramel", "chocolate"]
+}

@@ -6,23 +6,31 @@ import {
   Param,
   Patch,
   Post,
+  Query,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
+import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 
 @Controller('coffees')
 export class CoffeesController {
-  constructor(private readonly coffeeService: CoffeesService) {}
+  constructor(private readonly coffeeService: CoffeesService) {
+    console.log('CoffeesController created');
+  }
 
+  @UsePipes(ValidationPipe)
   @Get()
-  findAll() {
-    return this.coffeeService.findAll();
+  findAll(@Query() paginationQuery: PaginationQueryDto) {
+    // const { limit, offset } = paginateQuery;
+    return this.coffeeService.findAll(paginationQuery);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.coffeeService.findOne('' + id);
+  findOne(@Param('id') id: string) {
+    return this.coffeeService.findOne(id);
   }
 
   @Post()
@@ -38,6 +46,6 @@ export class CoffeesController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.coffeeService.remove(id)
+    return this.coffeeService.remove(id);
   }
 }
