@@ -17,6 +17,9 @@ Authorization: {{ auth }}
 ###
 GET {{url}}/{{endpoint}}/{{id}} HTTP/1.1
 Authorization: 98UPFOAIFJDP1I823Y4PAWASDFasdf3432
+###
+GET {{url}}/{{endpoint}}/abc HTTP/1.1
+Authorization: 98UPFOAIFJDP1I823Y4PAWASDFasdf3432
 
 ###
 PATCH {{url}}/{{endpoint}}/{{id}} HTTP/1.1
