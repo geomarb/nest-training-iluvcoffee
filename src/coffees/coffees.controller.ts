@@ -19,7 +19,6 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 export class CoffeesController {
   constructor(private readonly coffeeService: CoffeesService) {}
 
-  @UsePipes(ValidationPipe)
   @Get()
   findAll(@Query() paginationQuery: PaginationQueryDto) {
     return this.coffeeService.findAll(paginationQuery);
@@ -39,7 +38,7 @@ export class CoffeesController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body(ValidationPipe) updateCoffeeDto: UpdateCoffeeDto,
+    @Body(ValidationPipe) updateCoffeeDto: UpdateCoffeeDto, // here is the bind method
   ) {
     return this.coffeeService.update(id, updateCoffeeDto);
   }
