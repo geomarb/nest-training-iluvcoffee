@@ -26,12 +26,6 @@ import { APP_PIPE } from '@nestjs/core';
     CoffeeRatingModule,
   ],
   controllers: [AppController],
-  providers: [
-    AppService,
-    {
-      provide: APP_PIPE,
-      useClass: ValidationPipe,
-    },
-  ],
+  providers: [AppService],
 })
 export class AppModule {}
