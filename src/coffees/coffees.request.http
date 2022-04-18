@@ -1,26 +1,41 @@
 @url = http://localhost:3000
 @endpoint = coffees
 @contentType = application/json
+@id = 4
+@auth = 98UPFOAIFJDP1I823Y4PAWASDFasdf3432
 
 ###
 GET {{url}}/{{endpoint}} HTTP/1.1
-Authorization: 98UPFOAIFJDP1I823Y4PAWASDFasdf3432
+Authorization: {{ auth }}
 
 
 ###
 # invalid route to test excpetion
 GET {{url}}/{{endpoint}}/-1 HTTP/1.1
+Authorization: {{ auth }}
 
 ###
 GET {{url}}/{{endpoint}}/{{id}} HTTP/1.1
+Authorization: 98UPFOAIFJDP1I823Y4PAWASDFasdf3432
 
 ###
-@id = 5
 PATCH {{url}}/{{endpoint}}/{{id}} HTTP/1.1
 Content-Type: {{contentType}}
+Authorization: {{ auth }}
 
 {
 	"name": "Coffee #4",
 	"brand": "Nest",
 	"flavors": ["caramel", "chocolate"]
+}
+
+###
+POST {{url}}/{{endpoint}} HTTP/1.1
+Content-Type: {{contentType}}
+Authorization: {{ auth }}
+
+{
+	"name": "Shipwrck Roast",
+	"brand": "Buddy Brew",
+	"flavors": [ "chocolate", "vanilla" ]
 }
