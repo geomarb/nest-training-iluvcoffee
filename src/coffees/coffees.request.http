@@ -5,6 +5,11 @@
 ###
 GET {{url}}/{{endpoint}} HTTP/1.1
 
+
+###
+# invalid route to test excpetion
+GET {{url}}/{{endpoint}}/-1 HTTP/1.1
+
 ###
 GET {{url}}/{{endpoint}}/{{id}} HTTP/1.1
 

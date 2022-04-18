@@ -20,5 +20,9 @@ export class HttpExpeptionFilter<T extends HttpException>
       typeof response === 'string'
         ? { message: exceptionResponse }
         : (exceptionResponse as object);
+
+    response
+      .status(status)
+      .json({ ...error, timestamp: new Date().toISOString() });
   }
 }
