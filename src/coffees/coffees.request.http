@@ -29,7 +29,7 @@ Authorization: {{ auth }}
 {
 	"name": "Coffee #4",
 	"brand": "Nest",
-	"flavors": ["caramel", "chocolate"]
+	"flavors": ["caramelx", "chocolate"]
 }
 
 ###
